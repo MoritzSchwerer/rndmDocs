@@ -26,7 +26,7 @@ Aktionen durchführen, wobei für jeden Faktor 1000 der Elemente bei dem logarit
 werden muss, sondern nur Faktor 10-mal mehr.
 Aber was bedeutet das? Ein effektiver Algorithmus funktioniert, er erledigt eine Aufgabe. Aber er erledigt diese Aufgabe nicht unbedingt
 Effizient. Effektivität bedeutet eine Aufgabe abschließen zu können, wobei Effizienz bedeutet eine Aufgabe so gut wie möglich abzuschließen.
-"So gut wie möglich" kann hierbei auf die Dauer, die Kosten oder auch physische oder psychische Erschöpfungen beziehen.
+"So gut wie möglich" kann hierbei auf die Dauer, die Kosten oder auch physische oder psychische Erschöpfungen bezogen sein.
 
 Aber was für eine Rolle spiel die Approximation in dem Ganzen?
 Wie der Titel zu vermuten anregt, ist die Approximation ein Werkzeug, um von Effektivität zu Effizienz zu gelangen.
