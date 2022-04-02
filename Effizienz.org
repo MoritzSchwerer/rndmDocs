@@ -1,4 +1,6 @@
 #+TITLE: Von Effectivitaet zu Effizienz durch Approximation
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+
 
 Wenn man im Duden die Wörter Effizienz und Effektivität sucht, wird man zu dem Ergebnis verleitet, dass die beiden Wörter wahllos
 für einander ausgetauscht werden können. Die Realität ist jedoch eine andere.
