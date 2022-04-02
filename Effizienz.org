@@ -7,6 +7,7 @@ Element "e" zwar ein durchaus effektiver Prozess, denn jedes erdenkliche Element
 in durchschnittlich n/2 Iterationen gefunden werden, wobei "n" die Anzahl der Elemente in "S" darstellt. In der Ohmschen Komplexitätsanalyse wird die Komplexität dieses Verfahrens als O(N) oder linear bezeichnet. Eine lineare Komplexität mag in sich selbst nicht sehr aufwändig wirken, wenn man
 allerdings die moderne Informationstechnologie betrachtet sind Listen/Arrays (für unsere Zwecke austauschbar durch Sets) mit Größen von über
 10 Millionen Elementen keine Seltenheit, wodurch sich zeigt, dass Effektivität alleine nicht die richtige Lösung für moderne Probleme darstellt.
+
 Wir brachen Effizienz!
 Aber was heißt es effizient zu sein?
 Um effizient zu sein, muss man auch effektiv sein, andersherum ist das jedoch nicht der Fall.
@@ -24,6 +25,7 @@ werden muss, sondern nur Faktor 10-mal mehr.
 Aber was bedeutet das? Ein effektiver Algorithmus funktioniert, er erledigt eine Aufgabe. Aber er erledigt diese Aufgabe nicht unbedingt
 Effizient. Effektivität bedeutet eine Aufgabe abschließen zu können, wobei Effizienz bedeutet eine Aufgabe so gut wie möglich abzuschließen.
 "So gut wie möglich" kann hierbei auf die Dauer, die Kosten oder auch physische oder psychische Erschöpfungen beziehen.
+
 Aber was für eine Rolle spiel die Approximation in dem Ganzen?
 Wie der Titel zu vermuten anregt, ist die Approximation ein Werkzeug, um von Effektivität zu Effizienz zu gelangen.
 So gibt es unterschiedliche Funktionen in der Mathematik und der Physik, die schwer zu berechnen sind. Unter anderem cos, sin, tan aber auch etwas
@@ -34,6 +36,7 @@ und sehr häufige Berechnung der inversen Quadratwurzel von x zu berechnen. Dies
 Division und das Wurzelziehen. Die genaue Funktionalität ist irrelevant. Ein wichtiges Highlight jedoch ist die iterative Näherung an ein
 lokales Optimum, was durch das Ableiten und dann eine probabilistische Rechnung der idealen Verschiebung erzielt wird. Dieser Prozess kann für
 eine endliche Anzahl an Iterationen durchgeführt werden oder bis die Verbesserung einen gegebenen Wert unterschreitet.
+
 Wie relevant sind diese Prozesse der iterativen Approximation jedoch für uns?
 Grundlegend kann man sagen, dass momentan jeder Algorithmus in der Künstlichen Intelligenz eine Art der interaktiven Approximation verwendet,
 genauer gesagt nennt sich der hier angewandte Algorithmus "Gradient Descent" der nur ein paar zusätzliche Parameter gegenüber dem Newton Verfahren
