@@ -1,4 +1,4 @@
-#+TITLE: Von Effectivität zu Effizienz durch Approximation
+#+TITLE: Von Effektivität zu Effizienz durch Approximation
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
 
 
