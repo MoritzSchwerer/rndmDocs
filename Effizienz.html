@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-04-03 Sun 13:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Von Effektivität zu Effizienz durch Approximation</title>
+<meta name="author" content="Moritz Schwerer" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Von Effektivität zu Effizienz durch Approximation</h1>
+<p>
+Wenn man im Duden die Wörter Effizienz und Effektivität sucht, wird man zu dem Ergebnis verleitet, dass die beiden Wörter wahllos
+für einander ausgetauscht werden können. Die Realität ist jedoch eine andere.
+So ist beispielsweise das lineare iterieren eines 1-dimensionalen in aufsteigender Wertigkeit sortierten Sets &ldquo;S&rdquo; auf der Suche nach dem
+Element &ldquo;e&rdquo; zwar ein durchaus effektiver Prozess, denn jedes erdenkliche Element &ldquo;e&rdquo;, dass sich in dem Set &ldquo;S&rdquo; befindet, kann
+in durchschnittlich n/2 Iterationen gefunden werden, wobei &ldquo;n&rdquo; die Anzahl der Elemente in &ldquo;S&rdquo; darstellt. In der Ohmschen Komplexitätsanalyse wird die Komplexität dieses Verfahrens als O(N) oder linear bezeichnet. Eine lineare Komplexität mag in sich selbst nicht sehr aufwändig wirken, wenn man
+allerdings die moderne Informationstechnologie betrachtet sind Listen/Arrays (für unsere Zwecke austauschbar durch Sets) mit Größen von über
+10 Millionen Elementen keine Seltenheit, wodurch sich zeigt, dass Effektivität alleine nicht die richtige Lösung für moderne Probleme darstellt.
+</p>
+
+<p>
+Wir brachen Effizienz!
+Aber was heißt es effizient zu sein?
+Um effizient zu sein, muss man auch effektiv sein, andersherum ist das jedoch nicht der Fall.
+Hier ist wohl möglich der Punkt, in dem die Verwirrung der Schreiber des Dudens ihren Ursprung hat.
+Um zurück zu dem oben genannten Beispiel der Suche eines Element &ldquo;e&rdquo; in einem Set &ldquo;S&rdquo; zu kommen versuchen wir
+die lineare Komplexität zu verbessern, wobei unser Maß der Effizienz die Anzahl an atomaren Prozessen in unserer Suche beträgt.
+Um dies zu erzielen, können unterschiedliche Algorithmen aus der Mathematik in Erwägung gezogen werden. Darunter das &ldquo;Iterative Näherungsverfahren&rdquo;, und die&ldquo;Interpolations-Suche&rdquo;. Einfachheitshalber beschäftigen wir uns mit dem Ersten.
+Das Vorgehen ist wie folgt: Suche den mittleren Index des zu iterierenden Mediums, vergleiche dessen Wert, mit dem der gesucht ist, haben wird das
+richtige Element gefunden sind wir fertig, ist das gefundene Element zu groß,  beschränken wir unsere Suche auf die kleinere Hälfte, und dementsprechend das Gegenteil, wenn wir einen kleineren Wert vorfinden. Der erprobte Mathematiker vermag hier möglicherweise das &ldquo;Divide and Conquer&rdquo;
+Verfahren zu erkennen, was darauf hinweist, dass es sich um einen logarithmischen Algorithmus handelt.
+Und durch Induktion lässt sich auch genau das beweisen. Die Komplexität beträgt nämlich O(log(N)), was bedeutet, wenn ein linearer Algorithmus
+1.000.000.000 atomare Aktionen verarbeiten müsse, so muss unser logarithmisches Verfahren gerade mal 30 (log2(1.000.000.000)) atomare
+Aktionen durchführen, wobei für jeden Faktor 1000 der Elemente bei dem logarithmischen Verfahren nicht Faktor 1000-mal mehr Arbeit geleistet
+werden muss, sondern nur Faktor 10-mal mehr.
+Aber was bedeutet das? Ein effektiver Algorithmus funktioniert, er erledigt eine Aufgabe. Aber er erledigt diese Aufgabe nicht unbedingt
+Effizient. Effektivität bedeutet eine Aufgabe abschließen zu können, wobei Effizienz bedeutet eine Aufgabe so gut wie möglich abzuschließen.
+&ldquo;So gut wie möglich&rdquo; kann hierbei auf die Dauer, die Kosten oder auch physische oder psychische Erschöpfungen bezogen sein.
+</p>
+
+<p>
+Aber was für eine Rolle spiel die Approximation in dem Ganzen?
+Wie der Titel zu vermuten anregt, ist die Approximation ein Werkzeug, um von Effektivität zu Effizienz zu gelangen.
+So gibt es unterschiedliche Funktionen in der Mathematik und der Physik, die schwer zu berechnen sind. Unter anderem cos, sin, tan aber auch etwas
+wie die inverse einer Wurzel. Verschiedene Approximierungsverfahren bieten die Möglichkeit, etwas von der Genauigkeit für Effizienz zu opfern.
+Die Kunst der Approximierung ist es, so viele unterliegende Attribute wie möglich von einer Funktion &ldquo;F&rdquo; zu erhalten, während ihre Komplexität
+jedoch relevant verringert wird. Ein bekanntes Beispiel ist der Quake III Algorithmus, welche das Newton Verfahren anwendet, um die sehr aufwändige
+und sehr häufige Berechnung der inversen Quadratwurzel von x zu berechnen. Diese Kalkulation beinhaltet gleich 2 sehr aufwändige Prozesse, die
+Division und das Wurzelziehen. Die genaue Funktionalität ist irrelevant. Ein wichtiges Highlight jedoch ist die iterative Näherung an ein
+lokales Optimum, was durch das Ableiten und dann eine probabilistische Rechnung der idealen Verschiebung erzielt wird. Dieser Prozess kann für
+eine endliche Anzahl an Iterationen durchgeführt werden oder bis die Verbesserung einen gegebenen Wert unterschreitet.
+</p>
+
+<p>
+Wie relevant sind diese Prozesse der iterativen Approximation jedoch für uns?
+Grundlegend kann man sagen, dass momentan jeder Algorithmus in der Künstlichen Intelligenz eine Art der interaktiven Approximation verwendet,
+genauer gesagt nennt sich der hier angewandte Algorithmus &ldquo;Gradient Descent&rdquo; der nur ein paar zusätzliche Parameter gegenüber dem Newton Verfahren
+hat. Des Weiteren wird in quasi jeder Form von Telekommunikation eine Art der Funktionsapproximierung angewendet, die den Namen &ldquo;Fourier Transform&rdquo;
+trägt, wobei hier ein Wellenbild mit einer einfach zu berechnenden Funktion (im Normalfall ein Polynom) approximiert wird, um möglichst
+wenige Daten übertragen zu müssen - oder um auf den Titel dieses Artikels zurückzukommen, die Datenübertragung effizienter macht.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Moritz Schwerer</p>
+<p class="date">Created: 2022-04-03 Sun 13:07</p>
+</div>
+</body>
+</html>
